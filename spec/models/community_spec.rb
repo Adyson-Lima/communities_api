@@ -7,7 +7,7 @@ RSpec.describe Community, type: :model do
   describe 'Testes de preenchimento do model Community' do
 
     it 'name consegue ser preenchido?' do
-      @community.name = ''
+      @community.name = 'libreoffice'
       expect(@community.name).to eq('libreoffice')
     end
 
