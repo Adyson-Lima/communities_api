@@ -1,6 +1,6 @@
 class Api::V1::CommunitiesController < ApplicationController
 
- before_action :set_community, only: %i[show] # show update destroy
+ before_action :set_community, only: %i[show update] # show update destroy
 
  def index
   @communities = Community.all 
@@ -15,6 +15,14 @@ class Api::V1::CommunitiesController < ApplicationController
   @community = Community.new(community_params)
   if @community.save
     render json: @community, status: :created, location: api_v1_community_url(@community)
+  else
+    render json: @community.errors, status: :unprocessable_entity
+  end
+ end
+
+ def update
+  if @community.update(community_params)
+    render json: @community
   else
     render json: @community.errors, status: :unprocessable_entity
   end
