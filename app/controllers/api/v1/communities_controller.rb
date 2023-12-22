@@ -1,10 +1,14 @@
 class Api::V1::CommunitiesController < ApplicationController
 
- # before_action :set_community, only: %i[] # show update destroy
+ before_action :set_community, only: %i[show] # show update destroy
 
  def index
   @communities = Community.all 
   render json: @communities
+ end
+
+ def show
+  render json: @community
  end
 
 private
