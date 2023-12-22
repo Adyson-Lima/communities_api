@@ -1,6 +1,6 @@
 class Api::V1::CommunitiesController < ApplicationController
 
- before_action :set_community, only: %i[show update] # show update destroy
+ before_action :set_community, only: %i[show update destroy] # show update destroy
 
  def index
   @communities = Community.all 
@@ -26,6 +26,10 @@ class Api::V1::CommunitiesController < ApplicationController
   else
     render json: @community.errors, status: :unprocessable_entity
   end
+ end
+
+ def destroy
+  @community.destroy!
  end
 
 private
