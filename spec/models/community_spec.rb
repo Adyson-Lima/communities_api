@@ -18,4 +18,14 @@ RSpec.describe Community, type: :model do
 
   end
 
+  describe 'testes de validacao do model Community' do
+
+    it 'objeto community valido com campos obrigatorios preenchidos?' do
+      @community.name = ''
+      @community.project = ''
+      expect(@community).to be_valid
+    end
+
+  end
+
 end
