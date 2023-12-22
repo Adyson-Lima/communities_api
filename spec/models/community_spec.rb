@@ -12,7 +12,7 @@ RSpec.describe Community, type: :model do
     end
 
     it 'project consegue ser preenchido?' do
-      @community.project = ''
+      @community.project = 'libreoffice'
       expect(@community.project).to eq('libreoffice')
     end
 
