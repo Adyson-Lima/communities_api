@@ -37,4 +37,13 @@ RSpec.describe Api::V1::CommunitiesController, type: :controller do
     end
   end
 
+  describe 'DELETE /api/v1/communities/id' do
+    it 'Consegue excluir um community e retornar status 204?' do
+      community = Community.last
+      delete :destroy, params: {id: community.id}
+      expect(Community.all).not_to include(community)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
