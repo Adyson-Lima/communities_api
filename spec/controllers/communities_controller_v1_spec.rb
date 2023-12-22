@@ -28,4 +28,13 @@ RSpec.describe Api::V1::CommunitiesController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/communities/id' do
+    it 'Consegue atualizar um community e retornar status 200?' do
+      community = Community.last
+      patch :update, params: {community: {name: 'Rails', project: 'Ruby on Rails'}, id: community.id}
+      expect(response.body).to include_json(name: 'Rails')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
