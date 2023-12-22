@@ -26,6 +26,11 @@ RSpec.describe Community, type: :model do
       expect(@community).to be_valid
     end
 
+    it 'objeto community invalido com campos obrigatorios não preenchidos?' do
+      community = Community.new
+      expect(community).to be_valid
+    end
+
   end
 
 end
