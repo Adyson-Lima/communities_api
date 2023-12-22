@@ -12,4 +12,12 @@ RSpec.describe Api::V1::CommunitiesController, type: :controller do
     end
   end
 
+  describe 'GET /api/v1/communities/id' do
+    it 'Consegue listar um community especifico e retornar status 200?' do
+      get :show, params: {id: @community.id}
+      expect(response.body).to include_json(name: 'debian')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
