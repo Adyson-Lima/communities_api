@@ -20,4 +20,12 @@ RSpec.describe Api::V1::CommunitiesController, type: :controller do
     end
   end
 
+  describe 'POST /api/v1/communities' do
+    it 'Consegue criar um community e retornar status 201?' do
+      post :create, params: {community: {name: 'ruby', project: 'ruby'}, format: :json}
+      expect(response.body).to include_json(name: 'ruby')
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
