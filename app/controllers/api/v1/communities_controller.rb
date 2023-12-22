@@ -11,6 +11,15 @@ class Api::V1::CommunitiesController < ApplicationController
   render json: @community
  end
 
+ def create
+  @community = Community.new(community_params)
+  if @community.save
+    render json: @community, status: :created, location: api_v1_community_url(@community)
+  else
+    render json: @community.errors, status: :unprocessable_entity
+  end
+ end
+
 private
 
 def set_community
